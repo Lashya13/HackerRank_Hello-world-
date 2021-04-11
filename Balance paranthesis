@@ -1,0 +1,23 @@
+def check(s):
+    openBracket = ['[','{','(']
+    closeBracket = [']','}',')']
+    stack = []
+    for i in s:
+        if i in openBracket:
+            stack.append(i)
+        elif i in closeBracket:
+            pos = closeBracket.index(i)
+            if len(stack) > 0 and openBracket[pos] == stack[len(stack) - 1]:
+                stack.pop()
+            else:
+                return False
+    if len(stack) == 0:
+        return True
+
+n=int(input())
+for j in range(n):
+    s = input()
+    if check(s):
+        print("YES")
+    else:
+        print("NO")
